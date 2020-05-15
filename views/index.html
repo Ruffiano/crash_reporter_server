@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V04</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
+        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+	<link type="text/css" rel="stylesheet" href="style0.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="top">
+	          <div class="budget__title">
+	            CONUN Crash Reporter
+	          </div>
+	        </div>
+
+
+
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+
+
+
+
+
+				<div class="table100 ver5 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1" id="node">node_uid</th>
+									<th class="cell100 column2">version</th>
+									<th class="cell100 column3">platform</th>
+									<th class="cell100 column4">error-id</th>
+									<th class="cell100 column5">error type</th>
+									<th class="cell100 column6">date</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+<!-- onclick="window.open('http://www.google.com','_blank')" -->
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody class="log_list_view">
+<!--								<tr class="row100 body" >-->
+<!--									<td class="cell100 column1"> <a href="detail.html">open</a> 1a3ae0272044ee0c51dd4b8a7033cb5241f35bda14f1fdf22dda54349815b805</td>-->
+<!--									<td class="cell100 column2">1.0.1</td>-->
+<!--									<td class="cell100 column3">win32</td>-->
+<!--									<td class="cell100 column4">Error</td>-->
+<!--									<td class="cell100 column5">2020-04-13 18:8:57</td>-->
+<!--								</tr>-->
+
+<!--								<tr class="row100 body">-->
+<!--									<td class="cell100 column1">Mind & Body</td>-->
+<!--									<td class="cell100 column2">Yoga</td>-->
+<!--									<td class="cell100 column3">8:00 AM - 9:00 AM</td>-->
+<!--									<td class="cell100 column4">Adam Stewart</td>-->
+<!--									<td class="cell100 column5">15</td>-->
+<!--								</tr>-->
+
+<!--								<tr class="row100 body">-->
+<!--									<td class="cell100 column1">Crit Cardio</td>-->
+<!--									<td class="cell100 column2">Gym</td>-->
+<!--									<td class="cell100 column3">9:00 AM - 10:00 AM</td>-->
+<!--									<td class="cell100 column4">Aaron Chapman</td>-->
+<!--									<td class="cell100 column5">10</td>-->
+<!--								</tr>-->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+</body>
+</html>

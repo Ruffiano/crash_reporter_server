@@ -1,54 +1,43 @@
 const express = require('express');
-const multer = require('multer');
-const bodyParser = require('body-parser');
-const moment = require('moment');
-const writeFile = require('write-file');
-const path = require('path');
-const http = require('http');
-
+const mongoose = require("mongoose");
+const bodyParser = require('body-parser')
+const exceptionRoute = require('./routes/routes.exception');
+const { ModelException } = require('./models/model.exeption');
 const app = express();
-const server = http.createServer(app);
 
+// Connecting to MongoDB and listen
+mongoose.connect('mongodb://localhost/loger_db', { useUnifiedTopology: true, useNewUrlParser: true})
+.then(() => {
+   console.log('MongoDb conected ...');
+    app.listen(3000, () => {
+        console.log('listening on 3000');
+    })
+})
+.catch((err) => {
+    return console.log(err)
+});
+
+mongoose.set('useFindAndModify', false);
+app.use(express.json());
+
+// setting up ejs engine
+app.set('view engine', 'html')
+
+// //middleware
 app.use(bodyParser.urlencoded({ extended: false }));
+//
+// app.use(bodyParser.json())
 
-const crashesPath = path.join(__dirname, 'crashes');
-const exceptionsPath = path.join(__dirname, 'uncaughtexceptions');
+// folder structure
+app.use(express.static('views'))
 
-const upload = multer({
-    dest: crashesPath,
-}).single('upload_file_minidump');
-
-app.post('/crashreports', upload, (request, response) => {
-    // ...
+app.use(function (req, res, next) {
+    console.log('Requested:',req.method, req.url);
+    next();
 });
 
+app.use('/api/v1', exceptionRoute);
 
-app.post('/log', upload, (request, response) => {
-    const report = JSON.stringify({
-        ...request.body,
-        date: new moment().format('YYYY-MM-DD HH:m:s')
-    });
-    console.log('>> >> report: ', report);
-    response.end();
-});
-
-app.post('/uncaughtexceptions', (request, response) => {
-    let time_based = new moment().format('YYYY-MM-DD_HH-m-s');
-    console.log('time_based: ', time_based, typeof time_based);
-    const filePath = path.join(exceptionsPath, `${time_based}.json`);
-    console.log('filePath: ', filePath);
-    const report = JSON.stringify({
-        ...request.body,
-        date: new moment().format('YYYY-MM-DD HH:m:s')
-    });
-
-    writeFile(filePath, report, error => {
-        if (error) return console.error('Error Saving', report);
-        console.log('Exception Saved', filePath, report);
-    });
-    response.end();
-});
-
-server.listen(3000, () => {
-    console.log('Crash report server running on Port 3000.');
-});
+app.get('/', async (req, res) => {
+    res.render('index.html')
+})
