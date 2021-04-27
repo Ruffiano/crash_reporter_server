@@ -6,7 +6,7 @@ const { ModelException } = require('./models/model.exeption');
 const app = express();
 
 // Connecting to MongoDB and listen
-mongoose.connect('mongodb://localhost/loger_db', { useUnifiedTopology: true, useNewUrlParser: true})
+mongoose.connect('mongodb://192.168.100.54/loger_db', { useUnifiedTopology: true, useNewUrlParser: true})
 .then(() => {
    console.log('MongoDb conected ...');
     app.listen(3000, () => {
