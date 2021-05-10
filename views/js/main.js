@@ -1,8 +1,9 @@
 function listView(object, id){
+	console.log(object)
 	var html, newHtml, element;
 	element = '.log_list_view';
 	html = '<tr class="row100 body" id="item_box-id">\n' +
-		'<td class="cell100 column1" id="node_uid-id"></td>\n' +
+		'<td class="cell100 column1" id="wallet_address-id"></td>\n' +
 		'<td class="cell100 column2" id="release_version-id"</td>\n' +
 		'<td class="cell100 column3" id="platform-id"></td>\n' +
 		'<td class="cell100 column4" id="error-id"></td>\n' +
@@ -10,16 +11,15 @@ function listView(object, id){
 		'<td class="cell100 column6" id="date-id"></td>\n' +
 		'</tr>';
 	newHtml = html.replace('item_box-id', 'item_box-'+id);
-	newHtml = newHtml.replace('node_uid-id', 'node_uid-'+id);
+	newHtml = newHtml.replace('wallet_address-id', 'wallet_address-'+id);
 	newHtml = newHtml.replace('release_version-id', 'release_version-'+id);
 	newHtml = newHtml.replace('platform-id', 'platform-'+id);
 	newHtml = newHtml.replace('error-id', 'error-'+id);
 	newHtml = newHtml.replace('error_type-id', 'error_type-'+id);
 	newHtml = newHtml.replace('date-id', 'date-'+id);
 	document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
-	console.log('view html code: ', newHtml, element, object, id);
 
-	document.getElementById('node_uid-'+id).innerText = object.node_uid;
+	document.getElementById('wallet_address-'+id).innerText = object.wallet_address;
 	document.getElementById('release_version-'+id).innerText = object.version;
 	document.getElementById('platform-'+id).innerText = object.platform;
 	document.getElementById('error-'+id).innerText = object._id;

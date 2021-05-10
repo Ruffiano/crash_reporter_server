@@ -7,6 +7,7 @@ const path = require('path');
 const http = require('http');
 const router = express.Router();
 const { ModelException, validate } = require('../models/model.exeption');
+const { REPL_MODE_STRICT } = require('repl');
 
 const crashesPath = path.join(__dirname, 'crashes');
 const exceptionsPath = path.join(__dirname, 'uncaughtexceptions');
@@ -51,17 +52,15 @@ router.post('/uncaughtexceptions', async (req, res) => {
 
     // console.log('>> Test parse:', report.error[name])
     let set_exception = new ModelException({
-        productName: report.productName,
-        companyName: report.companyName,
+        product_name: report.product_name,
+        company_name: report.company_name,
         version: report.version,
         platform: report.platform,
         process_type: report.process_type,
-        ver: report.ver,
-        node_uid: report.node_uid,
-        appLocation: report.appLocation,
+        wallet_address: report.wallet_address,
+        app_location: report.app_location,
         error_name: report.error_name,
         error_message: report.error_message,
-        error_stack: report.stack,
         error_date: report.date,
     });
     set_exception = await set_exception.save();
@@ -81,14 +80,13 @@ router.post('/log', async (req, res) => {
     const report = JSON.parse(_report);
 
     let set_exception = new ModelException({
-        productName: report.productName,
-        companyName: report.companyName,
+        product_name: report.product_name,
+        company_name: report.company_name,
         version: report.version,
         platform: report.platform,
         process_type: report.process_type,
-        ver: report.ver,
-        node_uid: report.node_uid,
-        appLocation: report.appLocation,
+        wallet_address: report.wallet_address,
+        app_location: report.app_location,
         error_name: report.error_name,
         error_message: report.error_message,
         error_date: report.date,

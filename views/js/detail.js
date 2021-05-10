@@ -1,14 +1,12 @@
 function detalView(object) {
-    document.getElementById('node_uid_id').value = object.node_uid;
+    document.getElementById('wallet_address_id').value = object.wallet_address;
     document.getElementById('date_id').value = object.error_date;
     document.getElementById('version_id').value = object.version;
-    document.getElementById('ver_id').value = object.ver;
     document.getElementById('platform_id').value = object.platform;
     document.getElementById('process_type_id').value = object.process_type;
-    document.getElementById('app_location_id').value = object.appLocation;
+    document.getElementById('app_location_id').value = object.app_location;
     document.getElementById('error_name_id').value = object.error_name;
     document.getElementById('error_message_id').innerText = object.error_message;
-    if(object.error_stack)document.getElementById('error_stack_id').innerText = object.error_stack;
 }
 
 
