@@ -98,10 +98,10 @@ router.post('/log', async (req, res) => {
 
 
 router.get('/get_log', async (request, response) => {
-    await ModelException.find({}, function(err, result) {
+    await ModelException.find({}).sort({'error_date':-1}).exec(function(err, result) {
         console.log('response: ', result)
         response.status(200).send(result);
-    })
+    });
 });
 
 router.get('/:id', async (request, response) => {
