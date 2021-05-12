@@ -2,15 +2,10 @@ const express = require('express');
 const multer = require('multer');
 const bodyParser = require('body-parser');
 const moment = require('moment');
-const writeFile = require('write-file');
 const path = require('path');
-const http = require('http');
 const router = express.Router();
 const { ModelException, validate } = require('../models/model.exeption');
-const { REPL_MODE_STRICT } = require('repl');
-
 const crashesPath = path.join(__dirname, 'crashes');
-const exceptionsPath = path.join(__dirname, 'uncaughtexceptions');
 
 const upload = multer({
     dest: crashesPath,
@@ -64,7 +59,6 @@ router.post('/uncaughtexceptions', async (req, res) => {
         error_date: report.date,
     });
     set_exception = await set_exception.save();
-    console.log('response: ', set_exception)
     res.end();
 });
 
@@ -92,14 +86,13 @@ router.post('/log', async (req, res) => {
         error_date: report.date,
     });
     set_exception = await set_exception.save();
-    console.log('response: ', set_exception)
+    console.log('response: ', set_exception);
     res.end();
 });
 
 
 router.get('/get_log', async (request, response) => {
-    await ModelException.find({}).sort({'error_date':-1}).exec(function(err, result) {
-        console.log('response: ', result)
+    await ModelException.find({}).sort({'error_date':-1}).limit(100).exec(function(err, result) {
         response.status(200).send(result);
     });
 });
